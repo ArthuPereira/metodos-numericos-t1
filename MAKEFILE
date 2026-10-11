@@ -1,0 +1,25 @@
+# Compilador e opções
+CXX      = g++
+CXXFLAGS = -std=c++17 -Wall -Wextra -Iinclude
+
+# Todos os .cpp da pasta src/
+SRC = $(wildcard src/*.cpp)
+
+# Nome do executável
+BIN = main
+
+# make  ->  compila
+all: $(BIN)
+
+$(BIN): $(SRC) $(wildcard include/*.hpp)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(BIN)
+
+# make run  ->  compila (se preciso) e executa
+run: $(BIN)
+	./$(BIN)
+
+# make clean  ->  apaga o executável
+clean:
+	rm -f $(BIN)
+
+.PHONY: all run clean
