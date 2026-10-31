@@ -1,0 +1,5 @@
+/main
+*.o
+__pycache__/
+saida/*
+!saida/.gitkeep

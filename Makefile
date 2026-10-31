@@ -18,8 +18,16 @@ $(BIN): $(SRC) $(wildcard include/*.hpp)
 run: $(BIN)
 	./$(BIN)
 
+# make csv  ->  gera apenas os arquivos CSV na pasta saida/
+csv: $(BIN)
+	./$(BIN) --csv saida
+
+# make graficos  ->  gera os CSVs e plota os gráficos de iterações
+graficos: csv
+	python3 ferramentas/grafico_iteracoes.py saida
+
 # make clean  ->  apaga o executável
 clean:
 	rm -f $(BIN)
 
-.PHONY: all run clean
+.PHONY: all run csv graficos clean
