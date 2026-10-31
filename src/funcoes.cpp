@@ -17,12 +17,17 @@ void finalizar(Resultado& r) {
     r.amplifica = r.d > LIMITE_AMPLIFICACAO;
 }
 
-std::vector<Resultado> executar_metodos(double a, double e) {
+std::vector<Resultado> executar_metodos(double a, double d0, double e) {
+    double d1 = (d0 == D0_PADRAO) ? D1_SECANTE : (d0 + 0.1);
     return {
-        newton_raphson(a, D0_PADRAO, e),
-        newton_modificado(a, D0_PADRAO, e),
-        secante(a, D0_PADRAO, D1_SECANTE, e)
+        newton_raphson(a, d0, e),
+        newton_modificado(a, d0, e),
+        secante(a, d0, d1, e)
     };
+}
+
+std::vector<Resultado> executar_metodos(double a, double e) {
+    return executar_metodos(a, D0_PADRAO, e);
 }
 
 std::vector<Resultado> teste_padrao() {

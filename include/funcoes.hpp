@@ -35,6 +35,7 @@ void finalizar(Resultado& r);
 
 // roda os 3 métodos para um valor de 'a' e devolve {Newton, Modificado, Secante}
 std::vector<Resultado> executar_metodos(double a, double e);
+std::vector<Resultado> executar_metodos(double a, double d0, double e);
 
 // item d): roda os métodos com valores padrão
 std::vector<Resultado> teste_padrao();
